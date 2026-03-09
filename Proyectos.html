@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyectos - Bounif Construcciones</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2d3436;
+            background-color: #f5f5f5;
+        }
+
+        /* Navegación */
+        nav {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 0.8rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            line-height: 1.1;
+            min-width: fit-content;
+        }
+
+        .logo span {
+            font-size: 2rem;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text .nombre {
+            font-size: 1.3rem;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-text .empresa {
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-top: -2px;
+            text-transform: uppercase;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2.5rem;
+            flex: 1;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 1.05rem;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+
+        nav a:hover {
+            color: #FF6B35;
+            background-color: rgba(255, 107, 53, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Botón Contactanos */
+        .btn-contactanos {
+            background: linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+            white-space: nowrap;
+        }
+
+        .btn-contactanos:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.6);
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%);
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><path d="M0,300 Q300,200 600,300 T1200,300 L1200,600 L0,600 Z" fill="rgba(255,255,255,0.1)"/></svg>') no-repeat center/cover;
+            z-index: 1;
+        }
+
+        header > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.8rem;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        header p {
+            font-size: 1.3rem;
+            font-weight: 300;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        /* Contenido principal */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .intro h2 {
+            color: #1a1a2e;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .intro p {
+            font-size: 1.2rem;
+            color: #555;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .proyectos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 35px;
+            margin: 40px 0;
+        }
+
+        .proyecto {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+            transition: all 0.3s ease;
+        }
+
+        .proyecto:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 15px 45px rgba(255, 107, 53, 0.3);
+        }
+
+        .proyecto-imagenes {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            overflow: hidden;
+        }
+
+        .proyecto-imagenes img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .proyecto:hover .proyecto-imagenes img {
+            transform: scale(1.05);
+        }
+
+        .proyecto-content {
+            padding: 30px;
+        }
+
+        .proyecto-content h3 {
+            color: #1a1a2e;
+            margin-bottom: 0.8rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .proyecto-content p {
+            color: #555;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        .proyecto-tipo {
+            display: inline-block;
+            background: linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%);
+            color: white;
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            margin-top: 10px;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 60px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .nav-container {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 1rem;
+            }
+
+            .logo {
+                order: 1;
+            }
+
+            nav ul {
+                order: 2;
+                gap: 1rem;
+                justify-content: center;
+            }
+
+            .btn-contactanos {
+                order: 3;
+                width: 100%;
+                text-align: center;
+            }
+
+            .proyecto-imagenes {
+                grid-template-columns: 1fr;
+            }
+
+            .proyecto-imagenes img {
+                height: 250px;
+            }
+
+            .intro h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navegación -->
+    <nav>
+        <div class="nav-container">
+            <a href="Index.html" class="logo">
+                <span>🏗️</span>
+                <div class="logo-text">
+                    <div class="nombre">Bounif</div>
+                    <div class="empresa">Construcciones</div>
+                </div>
+            </a>
+            <ul>
+                <li><a href="Index.html">Inicio</a></li>
+                <li><a href="Servicios.html">Servicios</a></li>
+                <li><a href="Proyectos.html">Proyectos</a></li>
+            </ul>
+            <a href="Contacto.html" class="btn-contactanos">Contáctanos</a>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <h1>Nuestros Proyectos</h1>
+        <p>Trabajos realizados con éxito en Ibiza</p>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main>
+        <section class="intro">
+            <h2>Galería de Proyectos</h2>
+            <p>Conoce algunos de los proyectos que hemos realizado con éxito en Ibiza. Cada imagen muestra el antes y después de nuestro trabajo.</p>
+        </section>
+
+        <section class="proyectos-grid">
+            <!-- Proyecto 1 -->
+            <div class="proyecto">
+                <div class="proyecto-imagenes">
+                    <img src="https://images.unsplash.com/photo-1570129477492-45a003537e1d?w=400" alt="Antes">
+                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400" alt="Después">
+                </div>
+                <div class="proyecto-content">
+                    <h3>Reforma Casa Rústica</h3>
+                    <p>Reforma integral de una vivienda rústica tradicional de Ibiza, actualizando sistemas y manteniendo su esencia arquitectónica.</p>
+                    <span class="proyecto-tipo">Reforma</span>
+                </div>
+            </div>
+
+            <!-- Proyecto 2 -->
+            <div class="proyecto">
+                <div class="proyecto-imagenes">
+                    <img src="https://images.unsplash.com/photo-1517457373614-b7152f800bb1?w=400" alt="Antes">
+                    <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=400" alt="Después">
+                </div>
+                <div class="proyecto-content">
+                    <h3>Cocina Moderna</h3>
+                    <p>Renovación completa de cocina con materiales de calidad, optimizando espacio y funcionalidad con diseño contemporáneo.</p>
+                    <span class="proyecto-tipo">Reforma</span>
+                </div>
+            </div>
+
+            <!-- Proyecto 3 -->
+            <div class="proyecto">
+                <div class="proyecto-imagenes">
+                    <img src="https://images.unsplash.com/photo-1603808033192-082d6919d3e1?w=400" alt="Antes">
+                    <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=400" alt="Después">
+                </div>
+                <div class="proyecto-content">
+                    <h3>Baño Lujoso</h3>
+                    <p>Diseño y construcción de baño de lujo con acabados premium, iluminación y sistemas de agua modernos.</p>
+                    <span class="proyecto-tipo">Reforma</span>
+                </div>
+            </div>
+
+            <!-- Proyecto 4 -->
+            <div class="proyecto">
+                <div class="proyecto-imagenes">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400" alt="Antes">
+                    <img src="https://images.unsplash.com/photo-1570129477492-45a003537e1d?w=400" alt="Después">
+                </div>
+                <div class="proyecto-content">
+                    <h3>Construcción Finca</h3>
+                    <p>Construcción de finca nueva respetando la arquitectura rústica ibicenca con todas las comodidades modernas.</p>
+                    <span class="proyecto-tipo">Construcción</span>
+                </div>
+            </div>
+
+            <!-- Proyecto 5 -->
+            <div class="proyecto">
+                <div class="proyecto-imagenes">
+                    <img src="https://images.unsplash.com/photo-1581578731548-c64695c952952?w=400" alt="Antes">
+                    <img src="https://images.unsplash.com/photo-1534776114926-72efd9849bda?w=400" alt="Después">
+                </div>
+                <div class="proyecto-content">
+                    <h3>Reparación Estructura</h3>
+                    <p>Reparación y refuerzo de estructura deteriorada, consolidando muros y recuperando la integridad de la construcción.</p>
+                    <span class="proyecto-tipo">Arreglo</span>
+                </div>
+            </div>
+
+            <!-- Proyecto 6 -->
+            <div class="proyecto">
+                <div class="proyecto-imagenes">
+                    <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=400" alt="Antes">
+                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400" alt="Después">
+                </div>
+                <div class="proyecto-content">
+                    <h3>Terraza Exterior</h3>
+                    <p>Construcción de terraza exterior con materiales rústicos, creando espacio funcional y acogedor con vistas panorámicas.</p>
+                    <span class="proyecto-tipo">Construcción</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Bounif Construcciones y Reformas Rústicas S.L. Todos los derechos reservados.</p>
+        <p>Ibiza, Islas Baleares</p>
+    </footer>
+</body>
+</html>
